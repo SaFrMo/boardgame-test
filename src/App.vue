@@ -9,6 +9,16 @@
                 {{ cell ? (cell == 0 ? 'X' : 'O') : '' }}
             </button>
         </div>
+
+        <h3 class="winner" v-if="state && state.ctx && state.ctx.gameover">
+            Game over!
+            <span key="win" v-if="state.ctx.gameover.winner">
+                Winner: {{ state.ctx.gameover.winner == 0 ? 'X' : '0' }}</span
+            >
+            <span key="draw" v-else>Draw!</span>
+            <br />
+            <button @click="client.reset">Restart</button>
+        </h3>
     </div>
 </template>
 
